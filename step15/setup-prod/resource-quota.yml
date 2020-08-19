@@ -1,15 +1,15 @@
 ##
-# 本番環境のリソース割当
+# 운영 환경의 리소스 할당
 #
 apiVersion: v1
 kind: ResourceQuota
 metadata:
-  name: quota        # Quotaの名前
-  namespace: prod    # 対象の名前空間
+  name: quota        # Quota 이름
+  namespace: prod    # 대상 네임스페이스 
 spec:
   hard:
-    requests.cpu: "1"     # CPU要求の合計量  1コア
-    requests.memory: 1Gi  # メモリ要求の合計 1ギガバイト
-    limits.cpu: "1"       # CPU最大の合計量  1コア
-    limits.memory: 1Gi    # メモリ要求の合計 1ギガバイト
+    requests.cpu: "1"     # CPU요구 합계량  1코어
+    requests.memory: 1Gi  # 메모리 요구 합계 1기가바이트
+    limits.cpu: "1"       # CPU최대 합계량  1코어
+    limits.memory: 1Gi    # 메모리 요구 합계 1기가바이트
 

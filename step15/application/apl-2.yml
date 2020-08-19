@@ -1,5 +1,5 @@
 #
-# 内部用マイクロサービス 模擬
+# 내부용 마이크로서비스 
 #
 apiVersion: apps/v1
 kind: Deployment
@@ -22,7 +22,7 @@ spec:
           - containerPort: 80
 ---
 #
-# 内部マイクロサービス用
+# 내부 마이크로 서비스 용 
 #
 apiVersion: v1
 kind: Service

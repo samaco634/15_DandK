@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ubuntu
+spec:
+  containers:
+  - name: nginx
+    image: private.registry.local:5043/ubuntu:18.04
+    command: ["tail","-f","/dev/null"]
+  imagePullSecrets:
+    - name: registry-auth

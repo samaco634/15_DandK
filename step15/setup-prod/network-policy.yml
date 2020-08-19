@@ -1,9 +1,9 @@
 #
-# 本番用 ネットワーク・ポリシーの設定
+# 운영 용 네트워크 폴리시 설정
 #
 
 ##
-# 同じネームスペース以外からのアクセスを禁止
+# 동일한 네임스페이스 외에서의 엑세스 금지
 #
 kind: NetworkPolicy
 apiVersion: networking.k8s.io/v1
@@ -12,13 +12,13 @@ metadata:
   namespace: prod
 spec:
   podSelector:
-    matchLabels:        #  ← 全てのポッドが対象
+    matchLabels:        #  ← 모든 파드가 대상
   ingress:
   - from:
     - podSelector: {}
 ---
 ## 
-# app: expose ラベルが付いたコンテナは公開する
+# app: expose 라벨이 붙은 컨테이너를 공개
 #
 kind: NetworkPolicy
 apiVersion: networking.k8s.io/v1

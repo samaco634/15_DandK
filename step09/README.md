@@ -1,13 +1,13 @@
-# Step09 サービスの本文に記述できなかった補足です。
+# Step09 서비스 보충 
 
 
-## ExtenalName 外部DNS名のアドレス解決の例
+## ExtenalName 외부 DNS 주소 해결 예
 
-v1.13以降では、extenalNameにIPアドレスを記述できますが、DNS名の文字列として扱われます。
-そのため、マニフェストに、DNS名を書いてアクセスする必要があります。
+v1.13이후, extenalName에 IP주소를 기술할 수 있으나 DNS의 문자열로 인식된다. 
+따라서 매니페스트에 DNS 이름을 써서 접속해야 한다. 
 
 
-実行例 svc-ext-dns.yml
+실행예 svc-ext-dns.yml
 
 ~~~
 $ kubectl apply -f svc-ext-dns.yml
@@ -34,15 +34,13 @@ round-trip min/avg/max = 16.367/16.562/16.939 ms
 
 
 
-## ヘッドレスにIPアドレスをハードコードする例 
+## 헤드리스로 IP주소를 하드코딩하는 
 
-ヘッドレスサービスとエンドポイントを svc-headless.yml で作成します。
-ポイントは、Endpoint のマニフェストを作成して、その中にIPアドレスを
-ハードコードすること、オブジェクト名は、サービスとエンドポイントで
-一致していることです。
+헤드리스 서비스와 엔드포인트를 svc-headless.yml에 작성한다. 
+Endpoint의 매니페스트를 작성하여 그 안에 IP주소를 하드코딩하고, 오브젝트 명은 서비스 엔드포인트와 일치해야 한다. 
 
 
-実行例 svc-headless.yml
+실행예 svc-headless.yml
 
 ~~~
 $ kubectl apply -f svc-headless.yml
@@ -69,6 +67,4 @@ PING server1 (192.168.1.16): 56 data bytes
 3 packets transmitted, 3 packets received, 0% packet loss
 round-trip min/avg/max = 0.585/0.748/0.905 ms~
 ~~~
-
-上記の例では、本件に関係ないものサービスは省略しています。
 

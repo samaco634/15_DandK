@@ -9,7 +9,7 @@ from kubernetes import client, config
 OBJECT_NAME = "pngen"
 qname = 'taskqueue'
 
-# メッセージ・ブローカーと接続
+# 메시지 브로커 접속
 def create_queue():
     qmgr_cred= pika.PlainCredentials('guest', 'guest')
     #qmgr_host='172.16.20.11'  # for vagrant-k8s
@@ -24,7 +24,7 @@ def create_queue():
     chnl.queue_declare(queue=qname)
     return chnl
 
-# ジョブのマニフェスト作成
+# 잡 매니페스트 작성
 def create_job_manifest(n_job, n_node):
     container = client.V1Container(
         name="pn-generator",
@@ -53,18 +53,18 @@ def create_job_manifest(n_job, n_node):
 
 if __name__ == '__main__':
 
-    # 素数計算の分割パラメータ
+    # 소수 계산 분할 파라미터
     job_parms = [[1,1000],[1001,2000],[2001,2000],[3001,4000]]
     jobs  = len(job_parms)
     nodes = 2
 
-    # キューへの書き込み
+    # 큐에 삽입
     queue = create_queue()
     for param_n in job_parms:
         param = str(param_n).replace('[','').replace(']','')
         queue.basic_publish(exchange='',routing_key=qname,body=param)
 
-    # kubectlの.kubeを読んでk8sマスタへ、ジョブ・リクエストを送信
+    # kubectl의.kube config를 읽어 k8s마스터에 잡 요청 전송
     config.load_kube_config()
     client.BatchV1Api().create_namespaced_job(
         body=create_job_manifest(jobs,nodes),namespace="default")

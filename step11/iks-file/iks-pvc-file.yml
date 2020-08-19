@@ -8,7 +8,7 @@ metadata:
     billingType: "hourly"
 spec:
   accessModes:
-    - ReadWriteMany  ## File(NFS)のため複数クライアントからマウント可
+    - ReadWriteMany  ## File(NFS)이므로 복수의 클라이언트에서 마운트 가능
   resources:
     requests:
-      storage: 20Gi  ## プロビジョニング要求容量(GB)
+      storage: 20Gi  ## 프로비저닝 요구용량(GB)

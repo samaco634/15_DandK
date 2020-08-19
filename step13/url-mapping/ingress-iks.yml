@@ -5,14 +5,14 @@ metadata:
   annotations:
     # kubernetes.io/ingress.class: 'nginx'
     # nginx.ingress.kubernetes.io/rewrite-target: /
-    # nginx.ingress.kubernetes.io/force-ssl-redirect: 'true' ## (1)リダイレクト
+    # nginx.ingress.kubernetes.io/force-ssl-redirect: 'true' ## (1)리다이렉트 
     ingress.bluemix.net/rewrite-path: "serviceName=nginx-svc rewrite=/;serviceName=java-svc rewrite=/"
-    ingress.bluemix.net/redirect-to-https: "True" ## (1)リダイレクト
+    ingress.bluemix.net/redirect-to-https: "True" ## (1)리다이렉트 
 spec:
-  tls:                             ## (2)暗号化設定セクション  表7 IngressTLS参照
-  - hosts:                         ## (3)ドメイン名
+  tls:                             ## (2)암호화 설정 섹션 표7 IngressTLS참고
+  - hosts:                         ## (3)도메인명
     - iks2.jp-tok.containers.appdomain.cloud
-    secretName: iks2               ## (4)サーバー証明書
+    secretName: iks2               ## (4)서버 인증서
   rules:
   - host: iks2.jp-tok.containers.appdomain.cloud
     http:

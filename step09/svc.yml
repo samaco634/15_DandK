@@ -1,10 +1,10 @@
-## サービス
+## 서비스
 apiVersion: v1
 kind: Service
 metadata:
   name: web-service
-spec:                 # typeを省略のため ClusterIP
-  selector:           # これは service - pod 連携用
+spec:                 # type을 생략하여 ClusterIP가 적용된다. 
+  selector:           # service - 백엔드 pod와 연결
     app: web
   ports:
   - protocol: TCP

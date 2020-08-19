@@ -20,7 +20,7 @@ spec:
         - name: blk
           mountPath: /mnt
         command: ["/usr/bin/tail","-f","/dev/null"]	  
-      volumes:              ## ポッドのボリューム定義
+      volumes:              ## 파드의 볼륨 정의 
       - name: blk
         persistentVolumeClaim:
           claimName: bronze-blk

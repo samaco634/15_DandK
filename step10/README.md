@@ -1,9 +1,10 @@
-# minikube 利用時の問題回避方法
+# minikube 이용시 문제 회피 방법
 
-minikube の IPアドレスが、バージョンアップに伴って変更になっています。
-これに伴いサンプルコード job-initiator.py ではminikube のIPアドレスを修正する必要があります。
+minikube 의 IP주소가 버전업에 따라 변하였다.
+이에 따라 예제 코드 job-initiator.py에서 minikube의 IP주소를 수정해야 한다.
 
-以下の方法でIPアドレスを確認する事ができます。
+다음 방법으로 IP주소를 확인할 수 있다. 
+
 
 ~~~
 $ minikube ip
@@ -11,21 +12,17 @@ $ minikube ip
 ~~~
 
 
-修正箇所は、以下の部分です。
+다음 부분 수정
 
 ~~~
-# メッセージ・ブローカーと接続
+# 메시지 브로커 접속
 def create_queue():
     qmgr_cred= pika.PlainCredentials('guest', 'guest')
     #qmgr_host='172.16.20.11'  # for vagrant-k8s
     #qmgr_host='192.168.99.100' # for minikube old version
-    qmgr_host='192.168.64.2' # for minikube latest version <<-- ここ
+    qmgr_host='192.168.64.2' # for minikube latest version <<-- 여기
     qmgr_port='31672'
     qmgr_pram = pika.ConnectionParameters(
     	      host=qmgr_host,
 	      port=qmgr_port,
 ~~~
-
-
-
-以上、Kubernetesをお楽しみください！

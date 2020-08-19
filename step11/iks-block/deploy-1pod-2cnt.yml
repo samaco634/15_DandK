@@ -13,20 +13,20 @@ spec:
       labels:
         app: dep1pod2c-blk
     spec:
-      containers:    ## 二つのコンテナを内包するポッド
-      - name: c1            ## コンテナ#1
+      containers:    ## 2개의 컨테이너를 내포하는 파드
+      - name: c1            ## 컨테이너 #1
         image: ubuntu
         volumeMounts:
         - name: blk
           mountPath: /mnt
         command: ["/usr/bin/tail","-f","/dev/null"]
-      - name: c2            ## コンテナ#2 
+      - name: c2            ## 컨테이너 #2 
         image: ubuntu
         volumeMounts:
         - name: blk
           mountPath: /mnt
         command: ["/usr/bin/tail","-f","/dev/null"]
-      volumes:       ## ポッドのボリューム定義
+      volumes:       ## 퍼시스턴트 볼륨 정의
       - name: blk
         persistentVolumeClaim:
           claimName: bronze-blk	

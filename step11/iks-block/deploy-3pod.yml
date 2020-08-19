@@ -5,7 +5,7 @@ metadata:
   labels:
     app: dep3pod-blk
 spec:
-  replicas: 3              ## ポッドが３つ起動
+  replicas: 3              ## 3개의 파드 기동
   selector:
     matchLabels:
       app: dep3pod-blk
@@ -21,7 +21,7 @@ spec:
         - name: blk
           mountPath: /mnt
         command: ["/usr/bin/tail","-f","/dev/null"]
-      volumes:              ## ポッドのボリューム定義 
+      volumes:              ## 파드의 볼륨 정의
       - name: blk
         persistentVolumeClaim:
           claimName: bronze-blk

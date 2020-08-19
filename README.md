@@ -1,52 +1,42 @@
-# 演習用のサンプルコード
+# 실습용 예제 코드
 
-このリポジトリは、[15Stepで習得 Dockerから入るKubernetes コンテナ開発からK8s本番運用まで (StepUp!選書)](https://amzn.to/2mgCRya)に掲載した演習用のサンプルコードです。
+이 리포지터리는 도서 "15단계로 배우는 도커와 쿠버네티스 실전 개발"의 예제 코드입니다. 
 
-## 本書の章立てとの対応づけ
+## 책 목차
 
-ディレクトリのStep番号で対応づけています。内容によってコマンドだけで完結するのでサンプルコードのないStepもあります。
+책에서 다루는 step별로 디렉터리를 구성하였습니다. step에 따라서는 예제 코드가 없는 경우가 있습니다. 
 
-### 2章 コンテナ開発を習得する5ステップ
-* Step01 コンテナ最初の一歩 (サンプルコードなし）
-* Step02 コンテナの操作 (サンプルコードなし）
-* Step03 コンテナ開発
-* Step04 コンテナとネットワーク
-* Step05 コンテナAPI
+### 2장 컨테이너 개발을 익히기 위한 5 단계
+* Step01 컨테이너 첫 걸음(예제 코드 없음)
+* Step02 컨테이너 조작(예제 코드 없음)
+* Step03 컨테이너 개발
+* Step04 컨테이너와 네트워크 
+* Step05 컨테이너 API
 
-### 3章 K8s実践活用のための10ステップ
-* Step06 Kubernetes最初の一歩 (サンプルコードなし）
-* Step07 マニフェストとポッド
-* Step08 デプロイメント
-* Step09 サービス
-* Step10 ジョブとクーロンジョブ
-* Step11 ストレージ
-* Step12 ステートフルセット
-* Step13 イングレス
-* Step14 オートスケール
-* Step15 クラスタの仮想化
+### 3장 K8s 실전활용을 위한 10 단계
+* Step06 Kubernetes 첫 걸음 (예제 코드 없음)
+* Step07 매니페스트와 파드
+* Step08 디플로이먼트
+* Step09 서비스
+* Step10 잡과 크론잡
+* Step11 스토리지
+* Step12 스테이트풀셋
+* Step13 인그레스
+* Step14 오토스케일
+* Step15 클러스터 가상화
 
 
-## 実行環境
+## 실행 환경
 
-IKSやGKEといったパブリッククラウドの環境でも動作します。また、読者自身のパソコン環境にVirtualBox と Vagrant で仮想環境をセットアップすれば、自分だけの学習環境も構築できます。
+IKS나 GKE와 같은 퍼블릭 클라우드에서도 동작합니다. 혹은 독자의 PC에 VirtualBox와 Vagrant를 사용하여 학습환경을 구축해도 됩니다.
 
 * Minikube https://github.com/takara9/vagrant-minikube 
-* オリジナルのKubernetesクラスタ https://github.com/takara9/vagrant-kubernetes
+* Kubernetes https://github.com/takara9/vagrant-kubernetes
 
-Kubernetes環境と組み合わせて利用できる永続ストレージです。
+Kubernetes와 연동할 수 있는 저장소
 
-* NFSサーバー 一般的NFSサーバーをコンテナからマウントする環境 https://github.com/takara9/vagrant-nfs
-* GlusterFSサーバー + Heketi の動的プロビジョニング環境 https://github.com/takara9/vagrant-glusterfs
-
-
-どうぞ、Docker や Kubernetes をお楽しみください。
+* NFS서버 일반적인 NFS서버를 컨테이너에서 마운트하는 경우 https://github.com/takara9/vagrant-nfs
+* GlusterFS서버 + Heketi 동적 프로비저닝 환경 https://github.com/takara9/vagrant-glusterfs
 
 
-## 質問や不具合についての注意事項
-
-この学習用コードについての不具合は、Issue https://github.com/takara9/codes_for_lessons/issues  に投稿をお願いします。他の質問サイトなどに質問を投稿することは問題ありませんが、筆者は対応しません。
-
-
-
-
-
+즐겁게 Docker와 Kubernetes를 학습하시길 바랍니다.

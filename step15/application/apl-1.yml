@@ -1,5 +1,5 @@
 #
-# 外部公開用 模擬
+# 외부 공개용
 #
 apiVersion: apps/v1
 kind: Deployment
@@ -11,10 +11,10 @@ spec:
     metadata:
       labels:
         web: web-apl1
-        app: expose          # 外部公開用ラベル
+        app: expose          # 외부 공개용 라벨 
     spec:
       containers:
-      - image: maho/webapl3  # 模擬用アプリ
+      - image: maho/webapl3  # 컨테이너 이미지
         name: web-server-c
         ports:
         - containerPort: 80
