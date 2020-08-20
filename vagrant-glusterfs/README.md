@@ -1,13 +1,13 @@
 # GlusterFS Server and Heketi Server on Vagrant
 
-이 Vagrant와 Ansible 코드는 다음 4개의 가상 서버에 [GlusterFS](https://www.gluster.org/) 와 [Heketi](https://github.com/heketi/heketi) 를 구축하여, Kuberentes 클러스터의 파드에서 마운트하여 사용할 수 있게 해준다. 이 가상 서버의 IP주소는 가성 서버에 할당된 내부 통신용 IP주소다. 
+이 Vagrant와 Ansible 코드는 다음 4개의 가상 서버에 [GlusterFS](https://www.gluster.org/)와 [Heketi](https://github.com/heketi/heketi)를 구축하여, 쿠버네티스 클러스터의 파드에서 마운트하여 사용할 수 있게 해준다. 이 가상 서버의 IP 주소는 가성 서버에 할당된 내부 통신용 IP 주소다. 
 
 1. heketi   172.20.1.20  
 1. gluster1 172.20.1.21　
 1. gluster1 172.20.1.22
 1. gluster1 172.20.1.23
 
-vagrant-kubernetes로 구축하는 Kubernetes클러스터와 조합하여, 퍼시스턴트 볼륨을 자동 프로비져닝을 환경을 위한 것이다. 
+vagrant-kubernetes로 구축하는 쿠버네티스 클러스터와 조합하여, 퍼시스턴트 볼륨을 자동 프로비져닝을 환경을 위한 것이다. 
 
 ## 이 클러스터를 기동하기 위해 필요한 소프트웨어 
 
@@ -18,7 +18,7 @@ vagrant-kubernetes로 구축하는 Kubernetes클러스터와 조합하여, 퍼�
 * kubectl (https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 * git (https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 
-## 가상머신의 호스트 환경
+## 가상 머신의 호스트 환경
 
 Vagrant와 VirtualBox가 동작 중인 OS가 필요
 
@@ -29,12 +29,12 @@ Vagrant와 VirtualBox가 동작 중인 OS가 필요
 저자의 테스트 환경은 다음과 같다. 
 
 * RAM: 8GB 
-* 남은 저장공간: 5GB 
+* 남은 저장 공간: 5GB 
 * CPU: Intel Core i5
 
-## GlusterFS 와 Heketi 서버 기동
+## GlusterFS와 Heketi 서버 기동
 
-다음의 명령어로 GlusterFS 와 Heketi를 위한 노드가 기동한다.
+다음의 명령어로 GlusterFS와 Heketi를 위한 노드가 기동한다.
 
 ```
 $ git clone https://github.com/takara9/vagrant-glusterfs
@@ -42,11 +42,11 @@ $ cd vagrant-glusterfs
 $ vagrant up
 ```
 
-## Kubernetes 파드에서 이용
+## 쿠버네티스 파드에서 이용
 
 vagrant-kubernetes로 구축한 클러스터로 테스트하기 위해서는 k8s-yaml 매니페스트를 적용한다. 
 
-Kubernetes 클러스터의 마스터 노드에 로그인하여, 레포지터리를 복사하고 다음 디렉터리로 이동한다. 
+쿠버네티스 클러스터의 마스터 노드에 로그인하여, 레포지터리를 복사하고 다음 디렉터리로 이동한다. 
 
 ```
 $ vagrant ssh master
@@ -116,7 +116,7 @@ gluster-heketi (default)   kubernetes.io/glusterfs   35m
 
 ## 일시 정지와 기동
 
-`vagrant halt` 로 클러스터의 가상 서버를 종료하고 `vagrant up`으로 기동한다. 
+`vagrant halt`로 클러스터의 가상 서버를 종료하고 `vagrant up`으로 기동한다. 
 
 
 ## 클린업
@@ -129,24 +129,24 @@ $ vagrant destroy -f
 
 ## 장애 대응
 
-GlusterFS에서는 루트 유저로 동작하지 않는 컨테이너에서 파일 시스템을 마운트하여 쓰기를 시도하면 `Permission denied` 에러가 발생한다. 이는 마운트되는 경로가 root 유저로 설저오디어 있기 때문이다. 
+GlusterFS에서는 루트 유저로 동작하지 않는 컨테이너에서 파일 시스템을 마운트하여 쓰기를 시도하면 `Permission denied` 에러가 발생한다. 이는 마운트되는 경로가 root 유저로 설정되어 있기 때문이다. 
 
 * Bug 1312421 - glusterfs mount-point return permission denied, https://bugzilla.redhat.com/show_bug.cgi?id=1312421
 * POSIX Access Control Lists, https://docs.gluster.org/en/latest/Administrator%20Guide/Access%20Control%20Lists/
 * Product Documentation for Red Hat Gluster Storage 3.5, https://access.redhat.com/documentation/ja-jp/red_hat_gluster_storage/3.5/
 * not able to configure with non root user #314, https://github.com/gluster/glusterfs/issues/314
 
-Red Hat의 GlusterFS에서는 OpenShift v3부터 문제가 해결되었으나, 커뮤니티 버전에서는 수작업으로 대응해야 한다. 
+레드햇(Red Hat)의 GlusterFS에서는 OpenShift v3부터 문제가 해결되었으나, 커뮤니티 버전에서는 수작업으로 대응해야 한다. 
 
 대응 방법은 다음과 같이 k8s-yaml/chmod-pod.yml을 적용하여 일반 유저에게도 쓰기 권한을 부여하면 된다. 
 
 ```
-$ kubectl get pvc 　 PVC명 취득
-$ vi chmod-pod.yml   PVC명을 설정
+$ kubectl get pvc (PVC명 취득)
+$ vi chmod-pod.yml (PVC명을 설정)
 $ kubectl apply -f chmod-pod.yml 
 ```
 
-매니페스트에서는 마지막 줄의 change-me를 변경하도록 한다. 
+매니페스트에서는 마지막 줄의 change-me를 변경한다. 
 
 ```file:chmod-pod.yml
 apiVersion: v1

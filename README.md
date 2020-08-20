@@ -36,7 +36,7 @@ IKS나 GKE와 같은 퍼블릭 클라우드에서도 동작합니다. 혹은 독
 쿠버네티스와 연동할 수 있는 저장소
 
 * NFS 서버 일반적인 NFS 서버를 컨테이너에서 마운트하는 경우 https://github.com/takara9/vagrant-nfs
-* GlusterFS서버 + Heketi 동적 프로비저닝 환경 https://github.com/Jpub/15_DandK/tree/master/vagrant-glusterfs
+* GlusterFS 서버 + Heketi 동적 프로비저닝 환경 https://github.com/Jpub/15_DandK/tree/master/vagrant-glusterfs
 
 
-즐겁게 도커와 쿠버네티스를 학습하시길 바랍니다.
+즐겁게 도커와 쿠버네티스를 학습하기 바랍니다.

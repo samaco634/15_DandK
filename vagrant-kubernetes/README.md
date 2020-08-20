@@ -1,11 +1,11 @@
 # vagrant-kubernetes
 
-이 Vagrant와 Ansible코드는 학습용 멀티 노드 kubernetes 환경을 자동으로 구축하는 스크립트다. 
-다음 유투부 영상을 참고하기 바란다. 
+이 Vagrant와 Ansible 코드는 학습용 멀티 노드 kubernetes 환경을 자동으로 구축하는 스크립트다. 
+다음 유튜브 영상을 참고하기 바란다. 
 https://www.youtube.com/watch?v=ajU5iwy4-eg
 
 
-vagrant 로 클러스터를 기동하면, 컴퓨터 상에 가상 서버 3대가 기동하여 Kubernetes 환경을 자동으로 구축한다. 그러면 kubectl 명령어를 사용할 수 있게 된다. 
+vagrant로 클러스터를 기동하면, 컴퓨터상에 가상 서버 3대가 기동하여 쿠버네티스 환경을 자동으로 구축한다. 그러면 kubectl 명령어를 사용할 수 있게 된다. 
 
 1. master 172.16.20.11
 1. node1  172.16.20.12
@@ -30,16 +30,16 @@ Vagrant와 VirtualBox가 동작하는 OS가 필요하다.
 * MacOS
 * Linux
 
-이 코드를 테스트한 필자의 환경은 다음과 같다. 
+이 코드를 테스트한 저자의 환경은 다음과 같다. 
 
 * RAM: 8GB 
-* 남은 저장공간: 5GB 이상
+* 남은 저장 공간: 5GB 이상
 * CPU: Intel Core i5 
 
 
 ## Kubernetes 기동 방법
 
-어떤 OS에서도 GitHub에서 다음 코드를 클론해서 vagrant up을 하면 된다. 
+어떤 OS에서든 깃헙에서 다음 코드를 클론해서 vagrant up을 하면 된다. 
 이 명령어가 실행 중에는 가상 서버의 이미지, 컨테이너 이미지 등 큰 용량의 다운로드가 발생한다. 
 
 ~~~
@@ -78,11 +78,11 @@ KubeDNS is running at https://172.16.20.11:6443/api/v1/namespaces/kube-system/se
 
 ## kubectl 설정 방법
 
-PC의 OS에서 kubectl 명령어를 사용하여 master상의 apiserver와 연동하기 위해서는 환경변수 KUBECONFIG에 config 파일의 경로를 설정해야 한다. 
+PC의 OS에서 kubectl 명령어를 사용하여 master상의 apiserver와 연동하기 위해서는 환경 변수 KUBECONFIG에 config 파일의 경로를 설정해야 한다. 
 
-이 config파일은 Ansible의 플레이북에 의해 자동 생성되며 git clone한 디렉터리에 kubeconfig에 생성된다. 
+이 config 파일은 Ansible의 플레이북에 의해 자동 생성되며, git clone한 디렉터리의 kubeconfig에 생성된다. 
 
-Windows10의 경우 다음과 같이 환경변수를 설정하여 kubectl 명령어를 사용할 수 있다. 
+Windows10의 경우 다음과 같이 환경 변수를 설정하여 kubectl 명령어를 사용할 수 있다. 
 
 ~~~
 C:\Users\Maho\tmp\vagrant-kubernetes>set KUBECONFIG=%CD%\kubeconfig\config
@@ -93,7 +93,7 @@ node1    Ready    <none>   35m   v1.14.3
 node2    Ready    <none>   35m   v1.14.3
 ~~~
 
-Linux / macOS에서는 git clone 으로 만들어진 디렉터리에서 다음 명령어를 실행한다. 
+Linux/macOS에서는 git clone으로 만들어진 디렉터리에서 다음 명령어를 실행한다. 
 ~~~
 imac:k8s_v1.14 maho$ export KUBECONFIG=`pwd`/kubeconfig/config
 imac:k8s_v1.14 maho$ kubectl get node
@@ -103,17 +103,17 @@ node1    Ready    <none>   76s   v1.14.3
 node2    Ready    <none>   63s   v1.14.3
 ~~~
 
-홈 디렉터리의 .kube에 config를 복사하면 환경변수 KUBECONFIG를 설정하지 않아도 kubectl을 사용할 수 있게 된다. 
+홈 디렉터리의 .kube에 config를 복사하면 환경 변수 KUBECONFIG를 설정하지 않아도 kubectl을 사용할 수 있게 된다. 
 
 ~~~
 C:\Users\Maho\tmp\vagrant-kubernetes\kubeconfig>copy config C:\Users\Maho\.kube\
         1 개 파일 복사
 ~~~
 
-Linux / macOS에서는 cp 명령어를 사용한다. 한번 kubectl 명령어를 실행하면 홈 디렉터리에 .kube/config가 작성되므로 복사만 하면 된다. 
+Linux/macOS에서는 cp 명령어를 사용한다. 한번 kubectl 명령어를 실행하면 홈 디렉터리에 .kube/config가 작성되므로 복사만 하면 된다. 
 
 
-## Kubernetes 클러스터 정지
+## 쿠버네티스 클러스터 정지
 
 클러스터의 가상 서버를 종료하기 위해서는 다음 명령어를 실행한다. 
 다시 기동하기 위해서는 vagrant up을 실행한다. 
@@ -122,7 +122,7 @@ vagrant halt
 ~~~
 
 
-## Kubernetes 클러스터 삭제 
+## 쿠버네티스 클러스터 삭제 
 
 다음 명령어를 통해 가상 서버를 삭제한다. 
 가상 서버에 가한 변경 사항이 전부 삭제된다. 
