@@ -13,14 +13,14 @@ try {
     $dsn = "mysql:host=$servername;dbname=$database";
     $conn = new PDO($dsn, $username, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    print("<p>接続に成功しました。</p>");
+    print("<p>접속에 성공했습니다.</p>");
 } catch(PDOException $e) {
-    print("<p>接続に失敗しました。</p>");
+    print("<p>접속에 실패했습니다.</p>");
     echo $e->getMessage();
 }
 
 $conn = null; 
-print('<p>クローズしました。</p>');
+print('<p>종료합니다.</p>');
 
 ?>
 </body>

@@ -1,11 +1,11 @@
-# 永続ボリューム 
+# 퍼시스턴트 볼륨
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: gvol-1
 spec:
   storageClassName: gluster-heketi
-  #storageClassName: ibmc-file-bronze   # 容量 20Gi IKS 
+  #storageClassName: ibmc-file-bronze   # 용량 20Gi IKS 
   accessModes:
    - ReadWriteMany
   resources:
@@ -13,7 +13,7 @@ spec:
       storage: 12Gi
       #storage: 20Gi   # for IKS
 ---
-# MySQLサーバーデプロイメント
+# MySQL서버 디플로이먼트
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -51,7 +51,7 @@ spec:
         persistentVolumeClaim:
           claimName: gvol-1
 ---
-# MySQLサーバー サービス
+# MySQL서버 서비스
 apiVersion: v1
 kind: Service
 metadata:

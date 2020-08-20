@@ -1,14 +1,14 @@
-# Ingress コントローラー+ Keepalived の動作確認補足
+# Ingress 컨트롤러 + Keepalived 동작 확인 보충
 
 
-ここではマスターノードからkubectl を実行して動作を確認する例を提示します。
+마스터 노드에서 kubectl을 실행하여 동작을 확인하는 예
 
 ~~~
 vagrant@master:~$ git clone https://github.com/takara9/codes_for_lessons
 ~~~
 
 
-## Ingress Controller + Keepalived のマニフェスト適用
+## Ingress Controller + Keepalived 매니페스트 적용
 
 ~~~
 vagrant@master:~/codes_for_lessons/step13$ kubectl apply -f ingress-keepalived/
@@ -29,7 +29,7 @@ clusterrole.rbac.authorization.k8s.io/kube-keepalived-vip created
 clusterrolebinding.rbac.authorization.k8s.io/kube-keepalived-vip created
 ~~~
 
-## 起動までの待ち状態と起動完了状態
+## 기동까지 대기하는 상태와 기동 완료 상태 
 
 ~~~
 vagrant@master:~/codes_for_lessons/step13$ kubectl get pod -n tkr-system -w
@@ -57,7 +57,7 @@ kube-keepalived-vip-hxr4v                   1/1     Running   0          15m
 nginx-ingress-controller-797f965f47-lhwnl   1/1     Running   0          15m
 ~~~
 
-## Ingressを利用したアプリケーションの起動
+## Ingress를 사용하는 애플리케이션 기동
 
 ~~~
 vagrant@master:~/codes_for_lessons/step13$ kubectl apply -f test-apl/
@@ -66,7 +66,7 @@ service/hello-world-svc created
 ingress.extensions/hello-world-ingress created
 ~~~
 
-## アプリケーションの動作確認
+## 애플리케이션 기동 확인
 
 ~~~
 vagrant@master:~/codes_for_lessons/step13$ kubectl get ing
@@ -91,9 +91,9 @@ hello-world-deployment-88fd567c-x9ttx   1/1     Running   0          66s
 ~~~
 
 
-## curlコマンドによるアクセステスト
+## curl명령어로 접근 테스트
 
-DNSやhostsに登録する事なく、curlのヘッダーにドメイン名を設定する事で、Ingress の判定をパスする事ができる。
+DNS나 hosts에 등록하지 않고, curl의 헤더에 도메인명을 설정하면 Ingress가 인식한다. 
 
 ~~~
 vagrant@master:~$ curl --header "Host: abc.sample.com" http://172.16.20.99/
@@ -101,6 +101,6 @@ vagrant@master:~$ curl --header "Host: abc.sample.com" http://172.16.20.99/
 ~~~
 
 
-## 注意
+## 주의
 
-このマニフェストは、K8s 1.14 を確認していますが、将来のバージョンで動作する保証はありません。
+이 매니페스트는 K8s 1.14 버전에서 확인했으며, 이 후 버전에서의 동작은 보장하지 않는다.

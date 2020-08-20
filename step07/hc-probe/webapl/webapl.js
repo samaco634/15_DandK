@@ -1,13 +1,13 @@
-// 模擬アプリケーション
+// 모의 애플리케이션
 //
 const express = require('express')
 const app = express()
 var start = Date.now()
 
-// Livenessプローブのハンドラー
-// 模擬障害として、起動から40秒を超えると、HTTP 500内部エラーを返します。
-// 40秒までは、HTTP 200 OKを返します。
-// つまり、40秒を超えると、Livenessプローブが失敗して、コンテナが再起動します。
+// Liveness 프로브 핸들러
+// 기동 후 40초가 되면, 500 에러를 반환한다.
+// 그 전까지는 HTTP 200 OK를 반환한다.
+// 즉, 40초가 되면, Liveness프로브가 실패하여 컨테이너가 재기동한다. 
 //
 app.get('/healthz', function(request, response) {
     var msec = Date.now() - start
@@ -19,10 +19,10 @@ app.get('/healthz', function(request, response) {
     response.status(code).send('OK')
 })
 
-// Redinessプローブのハンドラー
-// アプリケーションの初期化をシミュレーションして、
-// 起動してから20秒経過後、HTTP 200を返します。 
-// それまでは、HTTPS 200 OKを返します。
+// Rediness 프로브 핸들러
+// 애플리케이션의 초기화 시간으로 
+// 기동 후 20초 지나고 나서부터 HTTP 200을 반환한다. 
+// 그 전까지는 HTTPS 200 OK를 반환한다.
 app.get('/ready', function(request, response) {
     var msec = Date.now() - start
     var code = 500
@@ -33,13 +33,13 @@ app.get('/ready', function(request, response) {
     response.status(code).send('OK')
 })
 
-// トップページ
+// 첫 화면
 //
 app.get('/', function(request, response) {
     console.log('GET /')
     response.send('Hello from Node.js')
 })
 
-// サーバーポート番号 TCP
+// 서버 포트 번호
 //
 app.listen(3000);

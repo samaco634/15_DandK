@@ -4,7 +4,7 @@ metadata:
   name: bronze-blk
 spec:
   accessModes:
-    - ReadWriteOnce   ## Block(iSCSI)のため多重接続は不可
+    - ReadWriteOnce   ## Block(iSCSI)를 위한 다중 접속 불가
   resources:
     requests:
-      storage: 20Gi   ## プロビジョニング要求容量(GB)
+      storage: 20Gi   ## 프로비저닝 요구 용량(GB)

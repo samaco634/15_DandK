@@ -1,5 +1,5 @@
 ##
-# 本番サービス担当 サービスアカウント(SA)を作成
+# 운영 서비스를 담당하는 서비스 어카운트(SA) 작성
 #
 apiVersion: v1
 kind: ServiceAccount
@@ -8,7 +8,7 @@ metadata:
   namespace: prod
 ---
 ##
-# 本番サービス担当SAを「クラスタロール」を対応づけ
+# SA와 클러스터롤 바인딩
 #
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
@@ -26,8 +26,8 @@ subjects:
 
 ##---
 ##
-# 本番サービス担当 ロールの作成
-#   「クラスタロール」に含まれるので任意
+# 운영 서비스 담당 롤 작성
+#   클러스터 롤에 포함되므로 필수는 아님 
 #
 #apiVersion: rbac.authorization.k8s.io/v1
 #kind: Role
@@ -35,19 +35,19 @@ subjects:
 #  name: sysop
 #  namespace: prod
 #rules:
-# ポッドのアクセス権 コアAPIを指定 apiVersion: v1
+# 파드 접근 권한, Core API 지정 apiVersion: v1
 #- apiGroups: [""]
 #  resources: ["pods","pods/log","services"]
 #  verbs: ["get", "watch", "list"]
-# deploymentのアクセス権  extention/applsを指定
+# deployment 접근 권한, extention/appls 지정
 #- apiGroups: ["extensions", "apps"]  
 #  resources: ["deployments"]
 #  verbs: ["get", "watch", "list"]
 
 ---
 ##
-# 本番サービス担当SAと「ロールsysop」を対応づけ
-#   (クラスタロールに含まれるので任意)
+# 운영 서비스 담당 SA와 sysop 롤 바인딩
+#   (클러스터 롤에 포함되므로 필수는 아님)
 #
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding

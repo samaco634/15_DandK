@@ -1,5 +1,5 @@
-## サンプルコード
-##   EXEC ヘルスチェック 
+## 샘플 코드 
+##   EXEC 헬스 체크
 apiVersion: v1
 kind: Pod
 metadata:

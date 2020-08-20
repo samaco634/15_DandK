@@ -1,5 +1,5 @@
 ## 
-## HTTPS 模擬アプリケーション
+## HTTPS 모의 애플리케이션
 ##
 apiVersion: apps/v1
 kind: Deployment
@@ -7,31 +7,31 @@ metadata:
   name: web-apl3
 spec:
   replicas: 3
-  selector:         # これは deployment - pod 対応用
+  selector:         # deployment - pod 대응용
     matchLabels:
-      apl: web-apl3 # ポッドと一致するべきラベル
-  template:         ### ここからポッド・テンプレート
+      apl: web-apl3 # 파드와 일치해야 하는 라벨
+  template:         ### 파드 템플릿 
     metadata:
       labels:
-        apl: web-apl3   # ポッドのラベル
-        app: expose     # アクセスポリシーで公開を指定
+        apl: web-apl3   # 파드의 라벨
+        app: expose     # 접근 폴리시로 공개 지정
     spec:
       containers:
       - name: nginx
-        image: nginx:latest      # Nginx公式コンテナ
-        ports:                     # 公開用ポート
+        image: nginx:latest      # Nginx 공식 컨테이너
+        ports:                     # 공개 포트
         - protocol: TCP            # TCP
           containerPort: 443       # HTTPS
-        volumeMounts:                   ## ボリュームのマウント
-        - name: nginx-conf              # コンフィグマップのVol名
-          mountPath: /etc/nginx/conf.d  # マウントパス
-        - name: tls-cert                # シークレットのVol名
-          mountPath: /etc/cert          # マウントパス
-      volumes:               ## ボリューム定義
-      - name: nginx-conf     # Vol名
-        configMap:           # コンフィグマップを指定
-          name: nginx-conf   # 参照先のコンフィグマップ名
-      - name: tls-cert       # Vol名
-        secret:              # シークレットを指定
-          secretName: cert   # 参照先のシークレット名
+        volumeMounts:                   ## 볼륨 마운트
+        - name: nginx-conf              # 컨피그맵의 Vol 이름
+          mountPath: /etc/nginx/conf.d  # 마운트 경로
+        - name: tls-cert                # 시크릿 Vol 이름
+          mountPath: /etc/cert          # 마운트 경로
+      volumes:               ## 볼륨 정의 
+      - name: nginx-conf     # Vol 이름 
+        configMap:           # 컨피그맵을 지정
+          name: nginx-conf   # 참조할 컨피그맵 이름
+      - name: tls-cert       # Vol 이름
+        secret:              # 시크릿 지정
+          secretName: cert   # 참조할 시크릿 이름
 

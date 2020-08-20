@@ -1,5 +1,5 @@
 ##
-# リソース設定 コンテナに対するデフォルト値
+# 리소스 설정, 컨테이너에 대응하는 기본값
 #
 apiVersion: v1
 kind: LimitRange
@@ -8,10 +8,10 @@ metadata:
   namespace: prod
 spec:
   limits:
-  - default:          # デフォルト・リミット
-      cpu: 200m          # CPU最大時間(上限、これ以上割当たらない)
-      memory: 200Mi      # メモリ最大量(上限で越えると強制停止)
-    defaultRequest:   # デフォルト・リクエスト
-      cpu: 200m          # CPU要求時間(確保できないと起動しない)
-      memory: 100Mi      # メモリ要求量(確保できないと起動しない)
+  - default:          # 디폴트 리밋
+      cpu: 200m          # CPU 최대 시간(상한, 이 이상은 할당하지 않음)
+      memory: 200Mi      # 메모리 최대량(상한을 넘으면 강제 종료됨)
+    defaultRequest:   # 디폴트 리퀘스트
+      cpu: 200m          # CPU요구시간(확보하지 않으면 기동하지 않음)
+      memory: 100Mi      # 메모리 요구량(확보하지 않으면 기동하지 않음)
     type: Container

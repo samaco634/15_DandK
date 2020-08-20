@@ -1,21 +1,21 @@
-# カウンタ初期化
+# 카운터 초기화
 COUNT=0
 
-# 永続ボリューム
+# 퍼시스턴트 볼륨
 PV=/pv/save.dat
 
-# 環境変数が無ければセット
+# 환경변수가 없으면 설정
 if [ -z "$INTERVAL" ]; then
     INTERVAL=3
 fi
 
-# 起動時に状態取得
+# 기동 시 상태 취득 
 if [ -f $PV ]; then
    COUNT=`cat $PV`
    rm -f $PV
 fi
 
-# SIGTERM受信時処理
+# SIGTERM 시그널 처리
 save() {
   echo $COUNT > $PV
   exit
@@ -23,7 +23,7 @@ save() {
 trap save TERM
 
 
-# メインループ
+# 메인 루프
 while [ ture ];
 do
     TM=`date|awk '{print $4}'`

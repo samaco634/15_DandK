@@ -1,12 +1,12 @@
-# カウンタ初期化
+# 카운터 초기화
 COUNT=0
 
-# 環境変数が無ければセット
+# 환경변수가 없으면 설정 
 if [ -z "$INTERVAL" ]; then
     INTERVAL=3
 fi
 
-# メインループ
+# 메인 루프
 while [ ture ];
 do
     TM=`date|awk '{print $4}'`

@@ -1,5 +1,5 @@
-## サンプルコード
-##   TCP-SOCKET ヘルスチェック 
+## 샘플 코드
+##   TCP-SOCKET 헬스 체크 
 apiVersion: v1
 kind: Pod
 metadata:

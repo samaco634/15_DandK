@@ -3,14 +3,14 @@ kind: Pod
 metadata:
   name: pod1
 spec:
-  volumes:               ##「表5 Volume v1 core」を参照のこと
+  volumes:               ##「표5 Volume v1 core」참고
   - name: pvc1
     persistentVolumeClaim:
-      claimName: data1   ## <-- PVCの名前をセットする
+      claimName: data1   ## <-- PVC의 이름 설정
   containers:
   - name: ubuntu
     image: ubuntu:16.04
-    volumeMounts:        ## 「表6 VolumeMount v1 core」を参照のこと
+    volumeMounts:        ## 「표6 VolumeMount v1 core」참고
     - name: pvc1
-      mountPath: /mnt    ## <-- コンテナ上のマウントポイント
+      mountPath: /mnt    ## <-- 컨테이너 상 마운트 경로
     command: ["/usr/bin/tail","-f","/dev/null"]      
