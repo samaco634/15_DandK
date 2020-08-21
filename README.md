@@ -30,12 +30,12 @@
 
 IKS나 GKE와 같은 퍼블릭 클라우드에서도 동작합니다. 혹은 독자의 PC에 VirtualBox와 Vagrant를 사용하여 학습 환경을 구축해도 됩니다.
 
-* Minikube https://github.com/takara9/vagrant-minikube 
+* Minikube https://github.com/Jpub/15_DandK/tree/master/vagrant-minikube
 * Kubernetes https://github.com/Jpub/15_DandK/tree/master/vagrant-kubernetes 
 
 쿠버네티스와 연동할 수 있는 저장소
 
-* NFS 서버 일반적인 NFS 서버를 컨테이너에서 마운트하는 경우 https://github.com/takara9/vagrant-nfs
+* NFS 서버 일반적인 NFS 서버를 컨테이너에서 마운트하는 경우  https://github.com/Jpub/15_DandK/tree/master/vagrant-nfs
 * GlusterFS 서버 + Heketi 동적 프로비저닝 환경 https://github.com/Jpub/15_DandK/tree/master/vagrant-glusterfs
 
 
