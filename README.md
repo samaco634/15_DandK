@@ -13,8 +13,8 @@
 * Step04 컨테이너와 네트워크 
 * Step05 컨테이너 API
 
-### 3장 K8s 실전 활용을 위한 10단계
-* Step06 Kubernetes 첫걸음(예제 코드 없음)
+### 3장 쿠버네티스 실전 활용을 위한 10단계
+* Step06 쿠버네티스 첫걸음(예제 코드 없음)
 * Step07 매니페스트와 파드
 * Step08 디플로이먼트
 * Step09 서비스
@@ -35,7 +35,8 @@ IKS나 GKE와 같은 퍼블릭 클라우드에서도 동작합니다. 혹은 독
 
 쿠버네티스와 연동할 수 있는 저장소
 
-* NFS 서버 일반적인 NFS 서버를 컨테이너에서 마운트하는 경우  https://github.com/Jpub/15_DandK/tree/master/vagrant-nfs
+* NFS 서버 일반적인 NFS 서버를 컨테이너에서 마운트하는 경우
+https://github.com/Jpub/15_DandK/tree/master/vagrant-nfs
 * GlusterFS 서버 + Heketi 동적 프로비저닝 환경 https://github.com/Jpub/15_DandK/tree/master/vagrant-glusterfs
 
 
