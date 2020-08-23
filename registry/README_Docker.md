@@ -1,4 +1,4 @@
-# docker-composeを使用しないで起動する方法
+# docker-compose를 사용하지 않고 기동하는 방법
 
 docker network create backend-network
 
