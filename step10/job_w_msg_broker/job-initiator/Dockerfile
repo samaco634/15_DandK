@@ -1,5 +1,5 @@
-FROM ubuntu:16.04
-RUN apt-get update && apt-get install -y iputils-ping dnsutils curl apt-transport-https
+FROM ubuntu:18.04
+RUN apt-get update && apt-get install -y iputils-ping dnsutils curl apt-transport-https gnupg2
 
 # install kubectl
 RUN curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
@@ -9,5 +9,5 @@ RUN apt-get update && apt-get install -y kubectl
 
 # pyhon
 RUN apt-get install -y python python-pip
-RUN pip install pika kubernetes
-
+RUN pip install pika 
+RUN pip install kubernetes

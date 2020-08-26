@@ -1,8 +1,11 @@
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: session-deployment
 spec:
+  selector:
+    matchLabels:
+      app: session
   replicas: 10
   template:
     metadata:
@@ -10,7 +13,7 @@ spec:
         app: session
     spec:
       containers:
-        - image: 'maho/session-test:1.1'
+        - image: 'maho/session-test:latest'
           name: session
           ports:
             - containerPort: 80

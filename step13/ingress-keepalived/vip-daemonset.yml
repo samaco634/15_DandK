@@ -1,9 +1,12 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   name: kube-keepalived-vip
   namespace: tkr-system
 spec:
+  selector:
+    matchLabels:
+      name: kube-keepalived-vip
   template:
     metadata:
       labels:

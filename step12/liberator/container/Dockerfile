@@ -1,5 +1,5 @@
-FROM ubuntu:16.04
-RUN apt-get update # && apt-get install -y curl apt-transport-https
+FROM ubuntu:18.04
+RUN apt-get update && apt-get install -y curl apt-transport-https gnupg2
 
 # pyhon
 RUN apt-get install -y python python-pip
