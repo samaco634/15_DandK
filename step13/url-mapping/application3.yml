@@ -1,4 +1,4 @@
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: java-deployment
@@ -15,6 +15,9 @@ spec:
           ports:
             - containerPort: 9080
               name: httpport
+  selector:
+    matchLabels:
+      app: liberty
 ---
 apiVersion: v1
 kind: Service
