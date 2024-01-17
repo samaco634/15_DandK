@@ -26,3 +26,8 @@ def create_queue():
     	      host=qmgr_host,
 	      port=qmgr_port,
 ~~~
+10.08
+## job-initator
+~~~
+ docker run -it --rm  --name kube -v `pwd`/py:/py -v ~/.kube:/root/.kube job-init:0.1 bash
+~~~
