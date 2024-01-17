@@ -1,3 +1,10 @@
+## containerd restart
+- name: remove config.toml
+  shell: rm /etc/containerd/config.toml
+
+- name: containerd restart
+  shell: systemctl restart containerd
+
 ## k8s 노드 리셋
 #
 - name: kubeadm reset
