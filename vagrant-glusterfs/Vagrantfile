@@ -7,7 +7,7 @@ Vagrant.configure("2") do |config|
   ## Gluster1 가상 머신 기동
   #
   config.vm.define 'gluster1' do |machine|
-    machine.vm.box = "ubuntu/focal64"   # Ubuntu 20.04
+    machine.vm.box = "ubuntu/bionic64"
     machine.vm.hostname = 'gluster1'
     machine.vm.network :private_network,ip: "172.20.1.21"
     #machine.vm.network :public_network, ip: "192.168.1.81", bridge: "en0: Ethernet"
@@ -37,9 +37,9 @@ Vagrant.configure("2") do |config|
     machine.vm.synced_folder ".", "/vagrant", owner: "vagrant",
       group: "vagrant", mount_options: ["dmode=700", "fmode=700"]
 
-#    machine.vm.provision "shell", inline: <<-SHELL
-#sudo sed -i.bak -e "s%http://us.archive.ubuntu.com/ubuntu/%http://ftp.iij.ad.jp/pub/linux/ubuntu/archive/%g" /etc/apt/sources.list
-#SHELL
+    machine.vm.provision "shell", inline: <<-SHELL
+sudo sed -i.bak -e "s%http://us.archive.ubuntu.com/ubuntu/%http://ftp.iij.ad.jp/pub/linux/ubuntu/archive/%g" /etc/apt/sources.list
+SHELL
 
     ## GlusterFS 설치
     machine.vm.provision "ansible_local" do |ansible|
@@ -49,8 +49,6 @@ Vagrant.configure("2") do |config|
       ansible.install        = true
       ansible.limit          = "gluster1"
       ansible.inventory_path = "ansible-playbook/hosts"
-      ansible.pip_install_cmd = "sudo apt-get install -y python3-distutils && curl -s https://bootstrap.pypa.io/get-pip.py | sudo python3"
-      ansible.install_mode = "pip"
     end
     
   end
@@ -58,7 +56,7 @@ Vagrant.configure("2") do |config|
   ## Gluster2 가상 머신 기동 
   #
   config.vm.define 'gluster2' do |machine|
-    machine.vm.box = "ubuntu/focal64"   # Ubuntu 20.04
+    machine.vm.box = "ubuntu/bionic64"
     machine.vm.hostname = 'gluster2'
     machine.vm.network :private_network,ip: "172.20.1.22"
     #machine.vm.network :public_network, ip: "192.168.1.82", bridge: "en0: Ethernet"
@@ -88,9 +86,9 @@ Vagrant.configure("2") do |config|
     machine.vm.synced_folder ".", "/vagrant", owner: "vagrant",
       group: "vagrant", mount_options: ["dmode=700", "fmode=700"]
 
-#    machine.vm.provision "shell", inline: <<-SHELL
-#sudo sed -i.bak -e "s%http://us.archive.ubuntu.com/ubuntu/%http://ftp.iij.ad.jp/pub/linux/ubuntu/archive/%g" /etc/apt/sources.list
-#SHELL
+    machine.vm.provision "shell", inline: <<-SHELL
+sudo sed -i.bak -e "s%http://us.archive.ubuntu.com/ubuntu/%http://ftp.iij.ad.jp/pub/linux/ubuntu/archive/%g" /etc/apt/sources.list
+SHELL
     
     ## GlusterFS 설치 
     machine.vm.provision "ansible_local" do |ansible|
@@ -100,8 +98,6 @@ Vagrant.configure("2") do |config|
       ansible.install        = true
       ansible.limit          = "gluster2"
       ansible.inventory_path = "ansible-playbook/hosts"
-      ansible.pip_install_cmd = "sudo apt-get install -y python3-distutils && curl -s https://bootstrap.pypa.io/get-pip.py | sudo python3"
-      ansible.install_mode = "pip"
     end
     
   end
@@ -109,7 +105,7 @@ Vagrant.configure("2") do |config|
   ## Gluster3 가상 머신 기동 
   #
   config.vm.define 'gluster3' do |machine|
-    machine.vm.box = "ubuntu/focal64"   # Ubuntu 20.04
+    machine.vm.box = "ubuntu/bionic64"  
     machine.vm.hostname = 'gluster3'
     machine.vm.network :private_network,ip: "172.20.1.23"
     #machine.vm.network :public_network, ip: "192.168.1.83", bridge: "en0: Ethernet"
@@ -139,9 +135,9 @@ Vagrant.configure("2") do |config|
     machine.vm.synced_folder ".", "/vagrant", owner: "vagrant",
       group: "vagrant", mount_options: ["dmode=700", "fmode=700"]
 
-#    machine.vm.provision "shell", inline: <<-SHELL
-#sudo sed -i.bak -e "s%http://us.archive.ubuntu.com/ubuntu/%http://ftp.iij.ad.jp/pub/linux/ubuntu/archive/%g" /etc/apt/sources.list
-#SHELL
+    machine.vm.provision "shell", inline: <<-SHELL
+sudo sed -i.bak -e "s%http://us.archive.ubuntu.com/ubuntu/%http://ftp.iij.ad.jp/pub/linux/ubuntu/archive/%g" /etc/apt/sources.list
+SHELL
 
     ## GlusterFS 설치
     machine.vm.provision "ansible_local" do |ansible|
@@ -151,9 +147,6 @@ Vagrant.configure("2") do |config|
       ansible.install        = true
       ansible.limit          = "gluster3"
       ansible.inventory_path = "ansible-playbook/hosts"
-      ansible.pip_install_cmd = "sudo apt-get install -y python3-distutils && curl -s https://bootstrap.pypa.io/get-pip.py | sudo python3"
-      ansible.install_mode = "pip"
-
     end
 
   end
@@ -161,7 +154,7 @@ Vagrant.configure("2") do |config|
   ## Heketi 서버 
   #
   config.vm.define vm_name = "heketi" do |machine|
-    machine.vm.box = "ubuntu/focal64"   # Ubuntu 20.04
+    machine.vm.box = "ubuntu/bionic64"
     machine.vm.hostname = vm_name
     machine.vm.network :private_network,ip: "172.20.1.20"
     #machine.vm.network :public_network, ip: "192.168.1.80", bridge: "en0: Ethernet"
@@ -186,9 +179,9 @@ Vagrant.configure("2") do |config|
     #  ansible.inventory_path = "ansible-playbook/hosts"
     #end
     
-#    machine.vm.provision "shell", inline: <<-SHELL
-#sudo sed -i.bak -e "s%http://us.archive.ubuntu.com/ubuntu/%http://ftp.iij.ad.jp/pub/linux/ubuntu/archive/%g" /etc/apt/sources.list
-#SHELL
+    machine.vm.provision "shell", inline: <<-SHELL
+sudo sed -i.bak -e "s%http://us.archive.ubuntu.com/ubuntu/%http://ftp.iij.ad.jp/pub/linux/ubuntu/archive/%g" /etc/apt/sources.list
+SHELL
     
     ## Heketi 설치
     #
@@ -199,8 +192,6 @@ Vagrant.configure("2") do |config|
       ansible.install        = true
       ansible.limit          = "heketi"
       ansible.inventory_path = "ansible-playbook/hosts"
-      ansible.pip_install_cmd = "sudo apt-get install -y python3-distutils && curl -s https://bootstrap.pypa.io/get-pip.py | sudo python3"
-      ansible.install_mode = "pip"
     end
 
     machine.vm.provision "ansible_local" do |ansible|
@@ -210,8 +201,6 @@ Vagrant.configure("2") do |config|
       ansible.install        = false
       ansible.limit          = "heketi"
       ansible.inventory_path = "ansible-playbook/hosts"
-      ansible.pip_install_cmd = "sudo apt-get install -y python3-distutils && curl -s https://bootstrap.pypa.io/get-pip.py | sudo python3"
-      ansible.install_mode = "pip"
     end
   end
 end
