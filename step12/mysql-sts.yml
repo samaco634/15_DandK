@@ -29,9 +29,14 @@ spec:                       ## 표2 스테이트풀셋 사양
       labels:
         app: mysql-sts
     spec:
+      securityContext:
+        fsGroup: 2000
+        runAsUser: 1000
       containers:           
       - name: mysql
         image: mysql:5.7    ## Docker Hub MySQL 리포지터리 지정
+        args:
+          - "--ignore-db-dir=lost+found" #--initialize specified but the data directory has files in it. Aborting.
         env:
         - name: MYSQL_ROOT_PASSWORD
           value: qwerty
@@ -59,7 +64,7 @@ spec:                       ## 표2 스테이트풀셋 사양
       storageClassName: "" #standard            # 용량 2Gi  Minikube/GKE
       resources:
         requests:
-          storage: 300Mi
+          storage: 2Gi
       selector:
         matchLabels:
           name: pv-nfs-1
