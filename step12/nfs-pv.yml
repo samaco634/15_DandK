@@ -7,7 +7,7 @@ metadata:       ## 표8 참고
     name: pv-nfs-1
 spec:           ## 표9 참고
   capacity:
-    storage: 300Mi
+    storage: 2Gi
   accessModes:
     - ReadWriteMany
   nfs:          ## 표10참고
