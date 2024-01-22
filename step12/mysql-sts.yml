@@ -51,11 +51,15 @@ spec:                       ## 표2 스테이트풀셋 사양
   - metadata:
       name: pvc
     spec:                   ## 표4 퍼시스턴트볼륨 요구 스펙
-      accessModes: [ "ReadWriteOnce" ]
+      accessModes: 
+        - ReadWriteMany
       ## 환경에 맞게 선택하여, sotrage의 값을 편집
       #storageClassName: ibmc-file-bronze   # 용량 20Gi IKS
       #storageClassName: gluster-heketi     # 용량 12Gi GlusterFS
-      storageClassName: standard            # 용량 2Gi  Minikube/GKE
+      storageClassName: "" #standard            # 용량 2Gi  Minikube/GKE
       resources:
         requests:
-          storage: 2Gi
+          storage: 300Mi
+      selector:
+        matchLabels:
+          name: pv-nfs-1
