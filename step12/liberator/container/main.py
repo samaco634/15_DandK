@@ -17,7 +17,8 @@ def handler(signum, frame):
 def node_delete(v1,name):
     body = client.V1DeleteOptions()
     try:
-        resp = v1.delete_node(name, body)
+        #resp = v1.delete_node(name, body)
+        resp = v1.delete_node(name)
         print("delete node %s done" % name)
     except ApiException as e:
         print("Exception when calling CoreV1Api->delete_node: %s\n" % e)
