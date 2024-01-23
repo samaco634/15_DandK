@@ -1,3 +1,5 @@
+https://atsuizo.hatenadiary.jp/entry/2020/06/08/090000
+
 # 15단계로 배우는 도커와 쿠버네티스
 ![15단계로 배우는 도커와 쿠버네티스](http://image.kyobobook.co.kr/images/book/xlarge/469/x9791190665469.jpg)
 
