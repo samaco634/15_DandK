@@ -10,5 +10,5 @@ kubectl autoscale deployment heavy-cal --cpu-percent=50 --min=1 --max=50
 ~~~
 kubectl get hpa
 ~~~
- > NAME        REFERENCE                   TARGET    MINPODS  MAXPODS   REPLICAS   AGE
+ > NAME        REFERENCE                   TARGET    MINPODS  MAXPODS   REPLICAS   AGE  
  > heavy-cal   Deployment/heavy-cal/scale  0% / 50%  1        50        1          18s
