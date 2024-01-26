@@ -96,21 +96,21 @@
     group: vagrant
     mode:  '0600'
 
-## flannel 매니페스트 다운로드
+## Calico 매니페스트 다운로드
 #
-- name: Download a manifest of Flannel for k8s ver > 11
+- name: Download a manifest of Calico for k8s ver > 11
   template:
-    src:  kube-flannel.yml
-    dest: /home/vagrant/kube-flannel.yml
+    src:  calico.yaml
+    dest: /home/vagrant/calico.yaml
     mode: 0644
     owner: vagrant
     group: vagrant
 
-## Flannel 배포
+## Calico 배포
 #
-- name: Deploy Flannel 
+- name: Deploy Calico 
   become_user: vagrant
-  command: kubectl apply -f /home/vagrant/kube-flannel.yml
+  command: kubectl apply -f /home/vagrant/calico.yaml
 
 ## Metrics Server 다운로드
 #
